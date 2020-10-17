@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    </head>
+    <body>
+        <header>
+            {% include 'header.html.jinja' %}
+            <h1>Welcome to the blog of Alex Shadley, <u>sucker</u></h1>
+            <p>You've apparently had the misfortune of stumbling across this place.</p>
+            <ul>
+            {% for article in articles %}
+                <li><a href=content/{{ article.file_name }}.html>{{ article.metadata['title'] }}</a></li>
+            {% endfor %}
+            </ul>
+        </header>
+    </body>
+</html>
