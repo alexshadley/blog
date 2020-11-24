@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import os
 from pathlib import Path
+import shutil
 import markdown2
 
 
@@ -30,3 +31,8 @@ with (dir_path / 'web' / 'index.html').open('w') as f:
 for article in articles:
     with ( dir_path / 'web' / 'content' / f'{article.file_name}.html' ).open('w') as f:
         f.write(article_template.render(article=article, metadata=article.metadata))
+
+shutil.copy(
+    (dir_path / 'styles' / 'styles.css'),
+    (dir_path / 'web')
+)
